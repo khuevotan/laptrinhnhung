@@ -1,13 +1,14 @@
+int x =0;
 void setup()
 {
   pinMode(9, OUTPUT);
+  pinMode(A0, INPUT);
 }
 
 void loop()
 {
-  int x = analogRead(A0);
-  digitalWrite(9,HIGH);
-  delay(x);
-  digitalWrite(9,LOW);
-  delay(x);
+  x = analogRead(A0);
+  //chuyen sang do sang
+  int doSang = map(x,0,1023,0,255);
+  analogWrite(9,doSang);
 }
