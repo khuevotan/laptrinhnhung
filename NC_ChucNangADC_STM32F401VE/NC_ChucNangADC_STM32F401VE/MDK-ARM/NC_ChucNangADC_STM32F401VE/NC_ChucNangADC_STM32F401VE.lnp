@@ -1,0 +1,28 @@
+--cpu=Cortex-M4.fp.sp
+"nc_chucnangadc_stm32f401ve\startup_stm32f401xe.o"
+"nc_chucnangadc_stm32f401ve\main.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_it.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_msp.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_adc.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_adc_ex.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_ll_adc.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_rcc.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_rcc_ex.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_flash.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_flash_ex.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_flash_ramfunc.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_gpio.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_dma_ex.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_dma.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_pwr.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_pwr_ex.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_cortex.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_exti.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_tim.o"
+"nc_chucnangadc_stm32f401ve\stm32f4xx_hal_tim_ex.o"
+"nc_chucnangadc_stm32f401ve\system_stm32f4xx.o"
+--strict --scatter "NC_ChucNangADC_STM32F401VE\NC_ChucNangADC_STM32F401VE.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "NC_ChucNangADC_STM32F401VE.map" -o NC_ChucNangADC_STM32F401VE\NC_ChucNangADC_STM32F401VE.axf
