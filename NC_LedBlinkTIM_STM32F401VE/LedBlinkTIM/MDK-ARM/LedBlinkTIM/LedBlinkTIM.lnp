@@ -1,0 +1,25 @@
+--cpu=Cortex-M4.fp.sp
+"ledblinktim\startup_stm32f401xe.o"
+"ledblinktim\main.o"
+"ledblinktim\stm32f4xx_it.o"
+"ledblinktim\stm32f4xx_hal_msp.o"
+"ledblinktim\stm32f4xx_hal_tim.o"
+"ledblinktim\stm32f4xx_hal_tim_ex.o"
+"ledblinktim\stm32f4xx_hal_rcc.o"
+"ledblinktim\stm32f4xx_hal_rcc_ex.o"
+"ledblinktim\stm32f4xx_hal_flash.o"
+"ledblinktim\stm32f4xx_hal_flash_ex.o"
+"ledblinktim\stm32f4xx_hal_flash_ramfunc.o"
+"ledblinktim\stm32f4xx_hal_gpio.o"
+"ledblinktim\stm32f4xx_hal_dma_ex.o"
+"ledblinktim\stm32f4xx_hal_dma.o"
+"ledblinktim\stm32f4xx_hal_pwr.o"
+"ledblinktim\stm32f4xx_hal_pwr_ex.o"
+"ledblinktim\stm32f4xx_hal_cortex.o"
+"ledblinktim\stm32f4xx_hal.o"
+"ledblinktim\stm32f4xx_hal_exti.o"
+"ledblinktim\system_stm32f4xx.o"
+--strict --scatter "LedBlinkTIM\LedBlinkTIM.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "LedBlinkTIM.map" -o LedBlinkTIM\LedBlinkTIM.axf
