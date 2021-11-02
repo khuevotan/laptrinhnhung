@@ -1,0 +1,25 @@
+--cpu=Cortex-M4.fp.sp
+"stm32_iloveyou\startup_stm32f401xe.o"
+"stm32_iloveyou\main.o"
+"stm32_iloveyou\stm32f4xx_it.o"
+"stm32_iloveyou\stm32f4xx_hal_msp.o"
+"stm32_iloveyou\stm32f4xx_hal_tim.o"
+"stm32_iloveyou\stm32f4xx_hal_tim_ex.o"
+"stm32_iloveyou\stm32f4xx_hal_rcc.o"
+"stm32_iloveyou\stm32f4xx_hal_rcc_ex.o"
+"stm32_iloveyou\stm32f4xx_hal_flash.o"
+"stm32_iloveyou\stm32f4xx_hal_flash_ex.o"
+"stm32_iloveyou\stm32f4xx_hal_flash_ramfunc.o"
+"stm32_iloveyou\stm32f4xx_hal_gpio.o"
+"stm32_iloveyou\stm32f4xx_hal_dma_ex.o"
+"stm32_iloveyou\stm32f4xx_hal_dma.o"
+"stm32_iloveyou\stm32f4xx_hal_pwr.o"
+"stm32_iloveyou\stm32f4xx_hal_pwr_ex.o"
+"stm32_iloveyou\stm32f4xx_hal_cortex.o"
+"stm32_iloveyou\stm32f4xx_hal.o"
+"stm32_iloveyou\stm32f4xx_hal_exti.o"
+"stm32_iloveyou\system_stm32f4xx.o"
+--strict --scatter "STM32_ILoveYou\STM32_ILoveYou.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "STM32_ILoveYou.map" -o STM32_ILoveYou\STM32_ILoveYou.axf
