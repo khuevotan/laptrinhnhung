@@ -1,0 +1,89 @@
+#include "main.h"
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+// Ham gui data/cmd ra 8 chan cua LCD
+void send8BitLCD(char D) {
+	// Dem D and so hoc voi 2^i de biet bit thu i =0 hay khac ko
+	// tim gia tri cac bit
+	int b0,b1,b2, b3,b4, b5, b6, b7;
+  if ((D & 1) == 0)  b0=0;              // 1== 2^0
+  else b0 =1;
+  if ((D & 2) == 0)  b1=0;              // 2== 2^1
+  else b1 =1;
+  if ((D & 4) == 0)  b2=0;              // 4== 2^2
+  else b2 =1;
+  if ((D & 8) == 0)  b3=0;              // 8== 2^3
+  else b3 =1;
+  if ((D & 16) == 0)  b4=0;              // 16== 2^4
+  else b4 =1;
+  if ((D & 32) == 0)  b5=0;              // 32== 2^5
+  else b5 =1;
+  if ((D & 64) == 0)  b6=0;              // 64== 2^6
+  else b6 =1;
+  if ((D & 128) == 0)  b7=0;              // 128== 2^7
+  else b7 =1;
+  HAL_GPIO_WritePin(GPIOD,GPIO_PIN_0, b0);
+  HAL_GPIO_WritePin(GPIOD,GPIO_PIN_1, b1);
+  HAL_GPIO_WritePin(GPIOD,GPIO_PIN_2, b2);
+  HAL_GPIO_WritePin(GPIOD,GPIO_PIN_3, b3);
+  HAL_GPIO_WritePin(GPIOD,GPIO_PIN_4, b4);
+  HAL_GPIO_WritePin(GPIOD,GPIO_PIN_5, b5);
+  HAL_GPIO_WritePin(GPIOD,GPIO_PIN_6, b6);
+  HAL_GPIO_WritePin(GPIOD,GPIO_PIN_7, b7);
+}
+
+// Ham gui lenh
+void sendCMD2LCD(char cmd) {
+	//B1. Done
+	//B2. Dat chan RS =0, de noi rang cmd  là lenh
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3,  GPIO_PIN_RESET);
+	//B3. Gui 8 bit CMD vao 8 pin
+	send8BitLCD(cmd);
+	//B4. Enable cho cmd-->lcd
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4,  GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4,  GPIO_PIN_SET);
+	//
+	HAL_Delay(1);
+}
+// Ham gui ky tu hien thi
+void sendChar2LCD(char Char) {
+	//B1. Done
+	//B2. Dat chan RS =1,  
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3,  GPIO_PIN_SET);
+	//B3. Gui 8 bit CMD vao 8 pin
+	send8BitLCD(Char);
+	//B4. Enable cho cmd-->lcd
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4,  GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4,  GPIO_PIN_SET);
+	//
+	HAL_Delay(1);
+}
+void sendString2LCD(char *str) {
+   for (int i=0; str[i] != '\0';  i++) {
+			sendChar2LCD(str[i]);
+   } 	
+}
+
+int main(void)
+{
+   HAL_Init();
+   SystemClock_Config();
+   MX_GPIO_Init();
+	 
+   // Xoa noi dung tren LCD
+   sendCMD2LCD(0x01);	
+	 // Bat hien thi man hinh, tat con tro
+	 sendCMD2LCD(0x0C);	
+	 // Test thu chuoi Hello
+	 sendString2LCD("Hello Cac Ban");	
+	 // Xuong dong 2
+	 sendCMD2LCD(0x38);   // CHE DO 2 DONG
+	 sendCMD2LCD(0xC0);	  // TRO XUONG DONG 2 
+	 sendString2LCD("VO TAN KHUE");	
+	 HAL_Delay(1000);
+	
+   while (1)
+   {
+   }
+
+}
